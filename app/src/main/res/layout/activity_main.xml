@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+<com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:paddingTop="40dp"
+    app:title="Temperature Converter"
+        app:titleCentered="true"
+
+        android:contentDescription="App toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <!-- Controls card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvInputLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Enter Temperature Value"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black"
+                        android:layout_marginBottom="4dp"/>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hintEnabled="false"
+                        app:boxBackgroundMode="outline"
+                        app:boxBackgroundColor="@android:color/white"
+
+                        app:boxStrokeWidth="1dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusBottomEnd="8dp">
+
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal|numberSigned"
+                            android:imeOptions="actionDone"
+                            android:hint="0.000"
+
+                            android:textColorHint="#999999"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- From / Swap / To row -->
+                    <!-- From / Swap / To row (replace existing row with this) -->
+                    <LinearLayout
+                        android:layout_marginTop="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- From Spinner -->
+                        <Spinner
+                            android:id="@+id/spFrom"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <!-- Swap Button placed between spinners -->
+                        <ImageButton
+                            android:id="@+id/btnSwap"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:src="@drawable/ic_swap"
+                            android:scaleType="centerInside"
+                            android:padding="6dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="Swap units"
+                            android:visibility="visible"/>
+
+                        <!-- To Spinner -->
+                        <Spinner
+                            android:id="@+id/spTo"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+
+                    <!-- Buttons row: only Convert (clear moved to result card) -->
+                    <LinearLayout
+                        android:layout_marginTop="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnConvert"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="48dp"
+                            android:text="Convert"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Result card (now contains Clear button under result/formula) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- Header: Result + Export + Copy -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:text="Result"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <ImageButton
+                            android:id="@+id/btnExport"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:contentDescription="Export"
+                            android:src="@drawable/ic_export"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:layout_marginEnd="8dp"/>
+
+                        <!-- reuse btnCopy id: MaterialButton with icon (keeps your Java handler) -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnCopy"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            app:icon="@drawable/ic_copy"
+                            app:iconGravity="textStart"
+
+                            app:cornerRadius="8dp"
+                            app:backgroundTint="@color/convertBlue"/>
+                    </LinearLayout>
+
+                    <!-- Big result -->
+                    <TextView
+                        android:id="@+id/tvResult"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--- ---"
+                        android:layout_gravity="center"/>
+
+                    <!-- short formula / subtext -->
+                    <TextView
+                        android:id="@+id/tvFormula"
+                        android:layout_marginTop="6dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:gravity="center"/>
+
+                    <!-- formula box (optional) -->
+
+
+                    <!-- NEW: Clear button inside Result card (id matches MainActivity) -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnClear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_gravity="center"
+                        android:text="Clear"
+                        app:icon="@drawable/ic_close"
+                        app:iconGravity="textStart"
+                        app:iconPadding="6dp"
+                        app:cornerRadius="8dp"
+                        app:backgroundTint="@color/clearGreen"
+                        android:textColor="@android:color/white"
+                        android:textAllCaps="false"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Recent conversions -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                android:layout_marginBottom="32dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- Header row: title + export + clear -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:text="Recent Conversions"
+                            android:textStyle="bold"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/tvExport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Export"
+                            android:textColor="?attr/colorPrimary"
+                            android:padding="6dp"/>
+
+                        <TextView
+                            android:id="@+id/tvClearAll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Clear All"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:padding="6dp"/>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvHistory"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:nestedScrollingEnabled="false"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- API 23+ overrides (keeps same theme parent so Base.Theme.* not required) -->
+    <style name="Theme.TemperatureConverter" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- override anything specific to API23+ here if needed -->
+    </style>
+</resources>

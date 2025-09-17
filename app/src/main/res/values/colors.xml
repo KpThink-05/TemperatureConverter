@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="md_primary">#1565C0</color>
+    <color name="md_onPrimary">#FFFFFF</color>
+
+    <color name="md_secondary">#6A1B9A</color>
+    <color name="md_onSecondary">#FFFFFF</color>
+
+    <color name="md_background">#FFFFFF</color>
+    <color name="md_surface">#FFFFFF</color>
+    <color name="md_onBackground">#111827</color>
+    <color name="md_onSurface">#111827</color>
+
+    <color name="md_card">#FAFAFA</color>
+    <color name="md_divider">#E5E7EB</color>
+    <color name="convertBlue">#2D9CDB</color>
+    <color name="clearGreen">#16A085</color>
+
+</resources>

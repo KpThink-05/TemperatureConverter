@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App theme (light) -->
+    <style name="Theme.TemperatureConverter" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/md_primary</item>
+        <item name="colorOnPrimary">@color/md_onPrimary</item>
+
+        <item name="colorSecondary">@color/md_secondary</item>
+        <item name="colorOnSecondary">@color/md_onSecondary</item>
+
+        <item name="android:colorBackground">@color/md_background</item>
+        <item name="colorSurface">@color/md_surface</item>
+        <item name="colorOnBackground">@color/md_onBackground</item>
+        <item name="colorOnSurface">@color/md_onSurface</item>
+
+        <!-- toolbar text color -->
+        <item name="android:textColorPrimary">@color/md_onBackground</item>
+
+        <!-- ensure Material components pick up the scheme -->
+        <item name="isMaterialTheme">true</item>
+    </style>
+
+</resources>
